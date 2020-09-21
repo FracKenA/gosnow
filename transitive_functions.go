@@ -50,17 +50,25 @@ func AssembleRequest(requestTransitive RequestTransitive, table string) *http.Re
 	// Add the corrected encoded parameters to the URL.
 	Url.RawQuery = encode
 
+	var request *http.Request
+
 	// Create the API Request's Payload if exists.
 	var payload *bytes.Reader
 	if requestTransitive.Payload != nil {
 		payload = bytes.NewReader(requestTransitive.Payload)
+		request, err = http.NewRequest(requestTransitive.Method, Url.String(), payload)
+		if err != nil {
+			requestTransitive.err = append(requestTransitive.err, fmt.Errorf("warning: %s\n", err))
+		}
+	} else {
+		request, err = http.NewRequest(requestTransitive.Method, Url.String(), nil)
+		if err != nil {
+			requestTransitive.err = append(requestTransitive.err, fmt.Errorf("warning: %s\n", err))
+		}
 	}
 
 	// Create the full request.
-	request, err := http.NewRequest(requestTransitive.Method, Url.String(), payload)
-	if err != nil {
-		requestTransitive.err = append(requestTransitive.err, fmt.Errorf("warning: %s\n", err))
-	}
+
 
 	// Set the request's authentication
 	request.SetBasicAuth(requestTransitive.Connection.Username, requestTransitive.Connection.Password)
