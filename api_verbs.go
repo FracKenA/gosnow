@@ -1,4 +1,4 @@
-package servicenow
+package gosnow
 
 import (
 	"net/url"

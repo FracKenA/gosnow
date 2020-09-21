@@ -1,4 +1,4 @@
-package servicenow
+package gosnow
 
 type IncidentTable struct {
 	Active                 string `json:"active,omitempty"`
