@@ -5,12 +5,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"strconv"
 )
 
-func (t RequestTransitive) Incident() (IncidentResultsArray, Result, error) {
+func (t RequestTransitive) IncidentDetail() (IncidentResultDetail, error) {
 
-	var i IncidentResultsArray
+	var i IncidentResultDetail
 	req := AssembleRequest(t, "incident")
 
 	res, err := http.DefaultClient.Do(req)
@@ -25,6 +24,8 @@ func (t RequestTransitive) Incident() (IncidentResultsArray, Result, error) {
 
 	defer CloseResponse(res)
 
+	// fmt.Println(string(body))
+
 	var e error
 	var h Result
 
@@ -33,27 +34,19 @@ func (t RequestTransitive) Incident() (IncidentResultsArray, Result, error) {
 		if err != nil {
 			fmt.Printf("Error%s\n", err)
 		}
-		l := res.Header.Get("X-Total-Count")
-
-		m, err := strconv.Atoi(l)
-		if err != nil {
-			fmt.Println("Error discovering number of results")
-		}
-
 		h.Status = res.Status
 		h.StatusCode = res.StatusCode
-		h.Results = m
 
 	} else {
 		e = fmt.Errorf("the request returned a status %s. the full details are %s", res.Status, body)
 	}
 
-	return i, h, e
+	return i, e
 }
 
-func (t RequestTransitive) Case() (CaseResultsArray, Result, error) {
+func (t RequestTransitive) CaseDetail() (CaseResultDetail, error) {
 
-	var i CaseResultsArray
+	var i CaseResultDetail
 	req := AssembleRequest(t, "sn_customerservice_case")
 
 	res, err := http.DefaultClient.Do(req)
@@ -76,27 +69,19 @@ func (t RequestTransitive) Case() (CaseResultsArray, Result, error) {
 		if err != nil {
 			fmt.Printf("Error%s\n", err)
 		}
-		l := res.Header.Get("X-Total-Count")
-
-		m, err := strconv.Atoi(l)
-		if err != nil {
-			fmt.Println("Error discovering number of results")
-		}
-
 		h.Status = res.Status
 		h.StatusCode = res.StatusCode
-		h.Results = m
 
 	} else {
 		e = fmt.Errorf("the request returned a status %s. the full details are %s", res.Status, body)
 	}
 
-	return i, h, e
+	return i, e
 }
 
-func (t RequestTransitive) CmdbCi() (CmdbCiResultsArray, Result, error) {
+func (t RequestTransitive) CmdbCiDetail() (CmdbCiResultDetail, error) {
 
-	var i CmdbCiResultsArray
+	var i CmdbCiResultDetail
 	req := AssembleRequest(t, "cmdb_ci")
 
 	res, err := http.DefaultClient.Do(req)
@@ -117,29 +102,21 @@ func (t RequestTransitive) CmdbCi() (CmdbCiResultsArray, Result, error) {
 	if res.StatusCode >= 200 && res.StatusCode <= 299 {
 		err = json.Unmarshal(body, &i)
 		if err != nil {
-			fmt.Printf("Error %s\n", err)
+			e = fmt.Errorf("Error %s\n", err)
 		}
-		l := res.Header.Get("X-Total-Count")
-
-		m, err := strconv.Atoi(l)
-		if err != nil {
-			fmt.Println("Error discovering number of results")
-		}
-
 		h.Status = res.Status
 		h.StatusCode = res.StatusCode
-		h.Results = m
 
 	} else {
 		e = fmt.Errorf("the request returned a status %s. the full details are %s", res.Status, body)
 	}
 
-	return i, h, e
+	return i, e
 }
 
-func (t RequestTransitive) CmdbCiServer() (CmdbCiServerResultsArray, Result, error) {
+func (t RequestTransitive) CmdbCiServerDetail() (CmdbCiServerResultDetail, string) {
 
-	var i CmdbCiServerResultsArray
+	var i CmdbCiServerResultDetail
 	req := AssembleRequest(t, "cmdb_ci_server")
 
 	res, err := http.DefaultClient.Do(req)
@@ -152,9 +129,11 @@ func (t RequestTransitive) CmdbCiServer() (CmdbCiServerResultsArray, Result, err
 		fmt.Printf("Error %s\n", err)
 	}
 
+	fmt.Println(string(body))
+
 	defer CloseResponse(res)
 
-	var e error
+	var e string
 	var h Result
 
 	if res.StatusCode >= 200 && res.StatusCode <= 299 {
@@ -162,27 +141,19 @@ func (t RequestTransitive) CmdbCiServer() (CmdbCiServerResultsArray, Result, err
 		if err != nil {
 			fmt.Printf("Error %s\n", err)
 		}
-		l := res.Header.Get("X-Total-Count")
-
-		m, err := strconv.Atoi(l)
-		if err != nil {
-			fmt.Println("Error discovering number of results")
-		}
-
 		h.Status = res.Status
 		h.StatusCode = res.StatusCode
-		h.Results = m
 
 	} else {
-		e = fmt.Errorf("the request returned a status %s. the full details are %s", res.Status, body)
+		e = fmt.Sprintf("the request returned a status %s. the full details are %s", res.Status, body)
 	}
 
-	return i, h, e
+	return i, e
 }
 
-func (t RequestTransitive) CmdbCiIpRouter() (CmdbCiIpRouterResultsArray, Result, error) {
+func (t RequestTransitive) CmdbCiIpRouterDetail() (CmdbCiIpRouterResultDetail, string) {
 
-	var i CmdbCiIpRouterResultsArray
+	var i CmdbCiIpRouterResultDetail
 	req := AssembleRequest(t, "cmdb_ci_ip_router")
 
 	res, err := http.DefaultClient.Do(req)
@@ -197,7 +168,7 @@ func (t RequestTransitive) CmdbCiIpRouter() (CmdbCiIpRouterResultsArray, Result,
 
 	defer CloseResponse(res)
 
-	var e error
+	var e string
 	var h Result
 
 	if res.StatusCode >= 200 && res.StatusCode <= 299 {
@@ -205,70 +176,19 @@ func (t RequestTransitive) CmdbCiIpRouter() (CmdbCiIpRouterResultsArray, Result,
 		if err != nil {
 			fmt.Printf("Error%s\n", err)
 		}
-		l := res.Header.Get("X-Total-Count")
-
-		m, err := strconv.Atoi(l)
-		if err != nil {
-			fmt.Println("Error discovering number of results")
-		}
-
 		h.Status = res.Status
 		h.StatusCode = res.StatusCode
-		h.Results = m
 
 	} else {
-		e = fmt.Errorf("the request returned a status %s. the full details are %s", res.Status, body)
+		e = fmt.Sprintf("the request returned a status %s. the full details are %s", res.Status, body)
 	}
 
-	return i, h, e
+	return i, e
 }
 
-func (t RequestTransitive) CmdbCiIpSwitch() (CmdbCiIpSwitchResultsArray, Result, error) {
+func (t RequestTransitive) CmdbCiFirewallNetworkDetail() (CmdbCiFirewallNetworkResultDetail, string) {
 
-	var i CmdbCiIpSwitchResultsArray
-	req := AssembleRequest(t, "cmdb_ci_ip_switch")
-
-	res, err := http.DefaultClient.Do(req)
-	if err != nil {
-		fmt.Printf("Error %s\n", err)
-	}
-
-	body, err := ioutil.ReadAll(res.Body)
-	if err != nil {
-		fmt.Printf("Error %s\n", err)
-	}
-
-	defer CloseResponse(res)
-
-	var e error
-	var h Result
-
-	if res.StatusCode >= 200 && res.StatusCode <= 299 {
-		err = json.Unmarshal(body, &i)
-		if err != nil {
-			fmt.Printf("Error%s\n", err)
-		}
-		l := res.Header.Get("X-Total-Count")
-
-		m, err := strconv.Atoi(l)
-		if err != nil {
-			fmt.Println("Error discovering number of results")
-		}
-
-		h.Status = res.Status
-		h.StatusCode = res.StatusCode
-		h.Results = m
-
-	} else {
-		e = fmt.Errorf("the request returned a status %s. the full details are %s", res.Status, body)
-	}
-
-	return i, h, e
-}
-
-func (t RequestTransitive) CmdbCiFirewallNetwork() (CmdbCiFirewallNetworkResultsArray, Result, error) {
-
-	var i CmdbCiFirewallNetworkResultsArray
+	var i CmdbCiFirewallNetworkResultDetail
 	req := AssembleRequest(t, "cmdb_ci_firewall_network")
 
 	res, err := http.DefaultClient.Do(req)
@@ -283,7 +203,7 @@ func (t RequestTransitive) CmdbCiFirewallNetwork() (CmdbCiFirewallNetworkResults
 
 	defer CloseResponse(res)
 
-	var e error
+	var e string
 	var h Result
 
 	if res.StatusCode >= 200 && res.StatusCode <= 299 {
@@ -291,27 +211,19 @@ func (t RequestTransitive) CmdbCiFirewallNetwork() (CmdbCiFirewallNetworkResults
 		if err != nil {
 			fmt.Printf("Error%s\n", err)
 		}
-		l := res.Header.Get("X-Total-Count")
-
-		m, err := strconv.Atoi(l)
-		if err != nil {
-			fmt.Println("Error discovering number of results")
-		}
-
 		h.Status = res.Status
 		h.StatusCode = res.StatusCode
-		h.Results = m
 
 	} else {
-		e = fmt.Errorf("the request returned a status %s. the full details are %s", res.Status, body)
+		e = fmt.Sprintf("the request returned a status %s. the full details are %s", res.Status, body)
 	}
 
-	return i, h, e
+	return i, e
 }
 
-func (t RequestTransitive) CmdbCiNetgear() (CmdbCiNetgearResultsArray, Result, error) {
+func (t RequestTransitive) CmdbCiNetgearDetail() (CmdbCiNetgearResultDetail, string) {
 
-	var i CmdbCiNetgearResultsArray
+	var i CmdbCiNetgearResultDetail
 	req := AssembleRequest(t, "cmdb_ci_firewall_network")
 
 	res, err := http.DefaultClient.Do(req)
@@ -326,7 +238,7 @@ func (t RequestTransitive) CmdbCiNetgear() (CmdbCiNetgearResultsArray, Result, e
 
 	defer CloseResponse(res)
 
-	var e error
+	var e string
 	var h Result
 
 	if res.StatusCode >= 200 && res.StatusCode <= 299 {
@@ -334,27 +246,20 @@ func (t RequestTransitive) CmdbCiNetgear() (CmdbCiNetgearResultsArray, Result, e
 		if err != nil {
 			fmt.Printf("Error%s\n", err)
 		}
-		l := res.Header.Get("X-Total-Count")
-
-		m, err := strconv.Atoi(l)
-		if err != nil {
-			fmt.Println("Error discovering number of results")
-		}
-
 		h.Status = res.Status
 		h.StatusCode = res.StatusCode
-		h.Results = m
 
 	} else {
-		e = fmt.Errorf("the request returned a status %s. the full details are %s", res.Status, body)
+		e = fmt.Sprintf("the request returned a status %s. the full details are %s", res.Status, body)
 	}
 
-	return i, h, e
+	return i, e
 }
 
-func (t RequestTransitive) CoreCompany() (CoreCompanyResultsArray, Result, error) {
+func (t RequestTransitive) CoreCompanyDetail() (CoreCompanyResultDetail, error) {
 
-	var i CoreCompanyResultsArray
+	var i CoreCompanyResultDetail
+
 	req := AssembleRequest(t, "core_company")
 
 	res, err := http.DefaultClient.Do(req)
@@ -377,27 +282,19 @@ func (t RequestTransitive) CoreCompany() (CoreCompanyResultsArray, Result, error
 		if err != nil {
 			fmt.Printf("Error%s\n", err)
 		}
-		l := res.Header.Get("X-Total-Count")
-
-		m, err := strconv.Atoi(l)
-		if err != nil {
-			fmt.Println("Error discovering number of results")
-		}
-
 		h.Status = res.Status
 		h.StatusCode = res.StatusCode
-		h.Results = m
 
 	} else {
 		e = fmt.Errorf("the request returned a status %s. the full details are %s", res.Status, body)
 	}
 
-	return i, h, e
+	return i, e
 }
 
-func (t RequestTransitive) SysUser() (SysUserResultsArray, Result, error) {
+func (t RequestTransitive) SysUserDetail() (SysUserResultDetail, string) {
 
-	var i SysUserResultsArray
+	var i SysUserResultDetail
 	req := AssembleRequest(t, "sys_user")
 
 	res, err := http.DefaultClient.Do(req)
@@ -412,7 +309,7 @@ func (t RequestTransitive) SysUser() (SysUserResultsArray, Result, error) {
 
 	defer CloseResponse(res)
 
-	var e error
+	var e string
 	var h Result
 
 	if res.StatusCode >= 200 && res.StatusCode <= 299 {
@@ -420,27 +317,19 @@ func (t RequestTransitive) SysUser() (SysUserResultsArray, Result, error) {
 		if err != nil {
 			fmt.Printf("Error%s\n", err)
 		}
-		l := res.Header.Get("X-Total-Count")
-
-		m, err := strconv.Atoi(l)
-		if err != nil {
-			fmt.Println("Error discovering number of results")
-		}
-
 		h.Status = res.Status
 		h.StatusCode = res.StatusCode
-		h.Results = m
 
 	} else {
-		e = fmt.Errorf("the request returned a status %s. the full details are %s", res.Status, body)
+		e = fmt.Sprintf("the request returned a status %s. the full details are %s", res.Status, body)
 	}
 
-	return i, h, e
+	return i, e
 }
 
-func (t RequestTransitive) UApplicationPack() (UApplicationPackResultsArray, Result, error) {
+func (t RequestTransitive) UApplicationPackDetail() (UApplicationPackResultDetail, string) {
 
-	var i UApplicationPackResultsArray
+	var i UApplicationPackResultDetail
 	req := AssembleRequest(t, "u_application_pack")
 
 	res, err := http.DefaultClient.Do(req)
@@ -455,7 +344,7 @@ func (t RequestTransitive) UApplicationPack() (UApplicationPackResultsArray, Res
 
 	defer CloseResponse(res)
 
-	var e error
+	var e string
 	var h Result
 
 	if res.StatusCode >= 200 && res.StatusCode <= 299 {
@@ -463,20 +352,12 @@ func (t RequestTransitive) UApplicationPack() (UApplicationPackResultsArray, Res
 		if err != nil {
 			fmt.Printf("Error%s\n", err)
 		}
-		l := res.Header.Get("X-Total-Count")
-
-		m, err := strconv.Atoi(l)
-		if err != nil {
-			fmt.Println("Error discovering number of results")
-		}
-
 		h.Status = res.Status
 		h.StatusCode = res.StatusCode
-		h.Results = m
 
 	} else {
-		e = fmt.Errorf("the request returned a status %s. the full details are %s", res.Status, body)
+		e = fmt.Sprintf("the request returned a status %s. the full details are %s", res.Status, body)
 	}
 
-	return i, h, e
+	return i, e
 }

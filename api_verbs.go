@@ -1,91 +1,18 @@
-package gosnow
+package servicenow
 
 import (
 	"net/url"
 )
 
-func (connection Connection) POST(payload []byte, limit string, fields string, offset string, query string, sysID string) RequestTransitive {
+func (c Connection) POST(payload []byte, limit string, fields string, offset string, query string, sysID string) RequestTransitive {
 
-	requestTransitive := RequestTransitive{}
+	t := RequestTransitive{}
 
-	requestTransitive.Connection = connection
+	t.Connection = c
 
-	requestTransitive.Method = "POST"
+	t.Method = "POST"
 
-	if payload == nil {
-
-	} else {
-		requestTransitive.Payload = payload
-	}
-
-	parameters := url.Values{}
-
-	if limit != "" {
-		parameters.Add("sysparm_limit", limit)
-	}
-	if fields != "" {
-		parameters.Add("sysparm_fields", fields)
-	}
-	if offset != "" {
-		parameters.Add("sysparm_offset", offset)
-	}
-	if query != "" {
-		parameters.Add("sysparm_query", query)
-	}
-
-	requestTransitive.Parameters = parameters
-
-	if sysID == "" {
-
-	} else {
-		requestTransitive.SysID = sysID
-	}
-
-	return requestTransitive
-
-}
-
-func (connection Connection) GET(limit string, fields string, offset string, query string, sysID string) RequestTransitive {
-
-	requestTransitive := RequestTransitive{}
-
-	requestTransitive.Connection = connection
-
-	requestTransitive.Method = "GET"
-
-	parameters := url.Values{}
-
-	if limit != "" {
-		parameters.Add("sysparm_limit", limit)
-	}
-	if fields != "" {
-		parameters.Add("sysparm_fields", fields)
-	}
-	if offset != "" {
-		parameters.Add("sysparm_offset", offset)
-	}
-	if query != "" {
-		parameters.Add("sysparm_query", query)
-	}
-
-	requestTransitive.Parameters = parameters
-
-	requestTransitive.SysID = sysID
-
-	return requestTransitive
-
-}
-
-func (connection Connection) PUT(payload []byte, limit string, fields string, offset string, query string, sysID string) RequestTransitive {
-
-
-	requestTransitive := RequestTransitive{}
-
-	requestTransitive.Connection = connection
-
-	requestTransitive.Method = "PUT"
-
-	requestTransitive.Payload = payload
+	t.Payload = payload
 
 	parameters := url.Values{}
 
@@ -103,24 +30,54 @@ func (connection Connection) PUT(payload []byte, limit string, fields string, of
 
 	}
 
-	requestTransitive.Parameters = parameters
+	t.Parms = parameters
 
-	requestTransitive.SysID = sysID
+	t.SysID = sysID
 
-	return requestTransitive
+	return t
 
 }
 
-func (connection Connection) PATCH(payload []byte, limit string, fields string, offset string, query string, sysID string) RequestTransitive {
+func (c Connection) GET(limit string, fields string, offset string, query string, sysID string) RequestTransitive {
 
+	t := RequestTransitive{}
 
-	requestTransitive := RequestTransitive{}
+	t.Connection = c
 
-	requestTransitive.Connection = connection
+	t.Method = "GET"
 
-	requestTransitive.Method = "PATCH"
+	parameters := url.Values{}
 
-	requestTransitive.Payload = payload
+	if limit != "" {
+		parameters.Add("sysparm_limit", limit)
+	}
+	if fields != "" {
+		parameters.Add("sysparm_fields", fields)
+	}
+	if offset != "" {
+		parameters.Add("sysparm_offset", offset)
+	}
+	if query != "" {
+		parameters.Add("sysparm_query", query)
+	}
+
+	t.Parms = parameters
+
+	t.SysID = sysID
+
+	return t
+
+}
+
+func (c Connection) PUT(payload []byte, limit string, fields string, offset string, query string, sysID string) RequestTransitive {
+
+	t := RequestTransitive{}
+
+	t.Connection = c
+
+	t.Method = "PUT"
+
+	t.Payload = payload
 
 	parameters := url.Values{}
 
@@ -138,24 +95,58 @@ func (connection Connection) PATCH(payload []byte, limit string, fields string, 
 
 	}
 
-	requestTransitive.Parameters = parameters
+	t.Parms = parameters
 
-	requestTransitive.SysID = sysID
+	t.SysID = sysID
 
-	return requestTransitive
+	return t
 
 }
 
-func (connection Connection) DELETE(sysID string) RequestTransitive {
+func (c Connection) PATCH(payload []byte, limit string, fields string, offset string, query string, sysID string) RequestTransitive {
 
-	requestTransitive := RequestTransitive{}
+	t := RequestTransitive{}
 
-	requestTransitive.Connection = connection
+	t.Connection = c
 
-	requestTransitive.Method = "DELETE"
+	t.Method = "PATCH"
 
-	requestTransitive.SysID = sysID
+	t.Payload = payload
 
-	return requestTransitive
+	parameters := url.Values{}
+
+	if limit != "" {
+		parameters.Add("sysparm_limit", limit)
+	}
+	if fields != "" {
+		parameters.Add("sysparm_fields", fields)
+	}
+	if offset != "" {
+		parameters.Add("sysparm_offset", offset)
+	}
+	if query != "" {
+		parameters.Add("sysparm_query", query)
+
+	}
+
+	t.Parms = parameters
+
+	t.SysID = sysID
+
+	return t
+
+}
+
+func (c Connection) DELETE(sysID string) RequestTransitive {
+
+	t := RequestTransitive{}
+
+	t.Connection = c
+
+	t.Method = "DELETE"
+
+	t.SysID = sysID
+
+	return t
 
 }

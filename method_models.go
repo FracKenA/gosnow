@@ -1,4 +1,4 @@
-package gosnow
+package servicenow
 
 import (
 	"net/url"
@@ -6,6 +6,7 @@ import (
 
 type Connection struct {
 	Instance string
+	Domain   string
 	Username string
 	Password string
 }
@@ -14,13 +15,12 @@ type RequestTransitive struct {
 	Payload []byte
 	Method  string
 	Connection
-	Parameters url.Values
-	SysID      string
-	err []error
+	Parms url.Values
+	SysID string
 }
 
 type Result struct {
-	Status      string
-	StatusCode  int
-	ResultCount int
+	Status     string
+	StatusCode int
+	Results    int
 }
