@@ -9,8 +9,8 @@ import (
 	"strings"
 )
 
-func InitializeConnection(instance, domain, username, password string) *Connection {
-	return &Connection{
+func InitializeConnection(instance, domain, username, password string) Connection {
+	return Connection{
 		instance,
 		domain,
 		username,
@@ -19,7 +19,9 @@ func InitializeConnection(instance, domain, username, password string) *Connecti
 }
 
 func AssembleRequest(t RequestTransitive, table string) *http.Request {
-	Url, err := url.Parse("https://" + t.Connection.Instance + t.Connection.Domain)
+	urlBuild := fmt.Sprintf("https://%s.%s", t.Connection.Instance, t.Connection.Domain)
+	fmt.Sprintf(urlBuild)
+	Url, err := url.Parse(urlBuild)
 	if err != nil {
 		fmt.Printf("Error%s\n", err)
 	}

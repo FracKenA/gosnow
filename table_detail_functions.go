@@ -361,3 +361,40 @@ func (t RequestTransitive) UApplicationPackDetail() (UApplicationPackResultDetai
 
 	return i, e
 }
+
+func (t RequestTransitive) CustomDetail(tableName string) (map[string]interface{}, error) {
+
+	var i map[string]interface{}
+	req := AssembleRequest(t, tableName)
+
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		fmt.Printf("Error %s\n", err)
+	}
+
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		fmt.Printf("Error %s\n", err)
+	}
+
+	defer CloseResponse(res)
+
+	// fmt.Println(string(body))
+
+	var e error
+	var h Result
+
+	if res.StatusCode >= 200 && res.StatusCode <= 299 {
+		err = json.Unmarshal(body, &i)
+		if err != nil {
+			fmt.Printf("Error%s\n", err)
+		}
+		h.Status = res.Status
+		h.StatusCode = res.StatusCode
+
+	} else {
+		e = fmt.Errorf("the request returned a status %s. the full details are %s", res.Status, body)
+	}
+
+	return i, e
+}

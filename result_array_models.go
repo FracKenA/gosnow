@@ -108,18 +108,6 @@ type IncidentResultsArray struct {
 		WorkNotes            string `json:"work_notes,omitempty"`
 		WorkNotesList        string `json:"work_notes_list,omitempty"`
 		WorkStart            string `json:"work_start,omitempty"`
-		UPublicCommentsAdded string `json:"u_public_comments_added,omitempty"` // Custom Field
-		UVip                 string `json:"u_vip,omitempty"`                   // Custom Field
-		UDoesKbNeedUpdated   string `json:"u_does_kb_need_updated,omitempty"`  // Custom Field
-		UGlideDateTime1      string `json:"u_glide_date_time_1"`               // Custom Field
-		UMajorIncident       string `json:"u_major_incident,omitempty"`        // Custom Field
-		UNotificationList    string `json:"u_notification_list,omitempty"`     // Custom Field
-		UFootprintsNumber    string `json:"u_footprints_number,omitempty"`     // Custom Field
-		USecureComment       string `json:"u_secure_comment,omitempty"`        // Custom Field
-		UCustomerVisible     string `json:"u_customer_visible,omitempty"`      // Custom Field
-		UReason              string `json:"u_reason,omitempty"`                // Custom Field
-		UPublicComment       string `json:"u_public_comment,omitempty"`        // Custom Field
-		UHasBreached         string `json:"u_has_breached,omitempty"`          // Custom Field
 	} `json:"result,omitempty"`
 }
 
@@ -255,18 +243,6 @@ type CaseResultsArray struct {
 		WorkNotes            string `json:"work_notes,omitempty"`
 		WorkNotesList        string `json:"work_notes_list,omitempty"`
 		WorkStart            string `json:"work_start,omitempty"`
-		UCustomerVisible     string `json:"u_customer_visible,omitempty"`      // Custom Field
-		UDoesKbNeedUpdated   string `json:"u_does_kb_need_updated,omitempty"`  // Custom Field
-		UGlideDateTime       string `json:"u_glide_date_time,omitempty"`       // Custom Field
-		UHasBreached         string `json:"u_has_breached,omitempty"`          // Custom Field
-		UNeedsAttention      string `json:"u_needs_attention,omitempty"`       // Custom Field
-		UNotificationList    string `json:"u_notification_list,omitempty"`     // Custom Field
-		UPublicComment       string `json:"u_public_comment,omitempty"`        // Custom Field
-		UPublicCommentsAdded string `json:"u_public_comments_added,omitempty"` // Custom Field
-		UReason              string `json:"u_reason,omitempty"`                // Custom Field
-		USecureComment       string `json:"u_secure_comment,omitempty"`        // Custom Field
-		UToDo                string `json:"u_to_do,omitempty"`                 // Custom Field
-		UVip                 string `json:"u_vip,omitempty"`                   // Custom Field
 	} `json:"result,omitempty"`
 }
 
@@ -355,20 +331,6 @@ type CmdbCiResultsArray struct {
 		Unverified         string `json:"unverified,omitempty"`
 		Vendor             string `json:"vendor,omitempty"`
 		WarrantyExpiration string `json:"warranty_expiration,omitempty"`
-		UApplicationPack   string `json:"u_application_pack,omitempty"`   // Custom Field
-		UBackupServer      string `json:"u_backup_server,omitempty"`      // Custom Field
-		UChangeAuthorizers string `json:"u_change_authorizers,omitempty"` // Custom Field
-		UComments          string `json:"u_comments,omitempty"`           // Custom Field
-		UDeviceID          string `json:"u_device_id,omitempty"`          // Custom Field
-		UIPAddress         string `json:"u_ip_address,omitempty"`         // Custom Field
-		UKbArticle         string `json:"u_kb_article,omitempty"`         // Custom Field
-		ULegacySource      string `json:"u_legacy_source,omitempty"`      // Custom Field
-		UManagementPack    string `json:"u_management_pack,omitempty"`    // Custom Field
-		UParent            string `json:"u_parent,omitempty"`             // Custom Field
-		UPollerGroup       string `json:"u_poller_group,omitempty"`       // Custom Field
-		URackPosition      string `json:"u_rack_position,omitempty"`      // Custom Field
-		URackUnit          string `json:"u_rack_unit,omitempty"`          // Custom Field
-		UVip               string `json:"u_vip,omitempty"`                // Custom Field
 	} `json:"result,omitempty"`
 }
 
@@ -486,43 +448,6 @@ type CmdbCiServerResultsArray struct {
 		Vendor              string `json:"vendor,omitempty"`
 		Virtual             string `json:"virtual,omitempty"`
 		WarrantyExpiration  string `json:"warranty_expiration,omitempty"`
-		UApplicationPack    string `json:"u_application_pack,omitempty"`     // Custom Field
-		UBackupRetention    string `json:"u_backup_retention,omitempty"`     // Custom Field
-		UBackupSchedule     string `json:"u_backup_schedule,omitempty"`      // Custom Field
-		UBackupServer       string `json:"u_backup_server,omitempty"`        // Custom Field
-		UBackupSystem       string `json:"u_backup_system,omitempty"`        // Custom Field
-		UBuildDate          string `json:"u_build_date,omitempty"`           // Custom Field
-		UChangeAuthorizers  string `json:"u_change_authorizers,omitempty"`   // Custom Field
-		UCloudManagement    string `json:"u_cloud_management,omitempty"`     // Custom Field
-		UComments           string `json:"u_comments,omitempty"`             // Custom Field
-		UCustomerDeviceName string `json:"u_customer_device_name,omitempty"` // Custom Field
-		UDeviceID           string `json:"u_device_id,omitempty"`            // Custom Field
-		UDeviceLocation     string `json:"u_device_location,omitempty"`      // Custom Field
-		UDeviceStatus       string `json:"u_device_status,omitempty"`        // Custom Field
-		UDeviceType         string `json:"u_device_type,omitempty"`          // Custom Field
-		UExcludeFromAnsible string `json:"u_exclude_from_ansible,omitempty"` // Custom Field
-		UIPAddress          string `json:"u_ip_address,omitempty"`           // Custom Field
-		UKbArticle          string `json:"u_kb_article,omitempty"`           // Custom Field
-		ULegacySource       string `json:"u_legacy_source,omitempty"`        // Custom Field
-		ULoginPort          string `json:"u_login_port,omitempty"`           // Custom Field
-		ULuksErv            string `json:"u_luks_erv,omitempty"`             // Custom Field
-		ULuksPmpEntry       string `json:"u_luks_pmp_entry,omitempty"`       // Custom Field
-		UManagementPack     string `json:"u_management_pack,omitempty"`      // Custom Field
-		UMotherboard        string `json:"u_motherboard,omitempty"`          // Custom Field
-		UOsFamily           string `json:"u_os_family,omitempty"`            // Custom Field
-		UParent             string `json:"u_parent,omitempty"`               // Custom Field
-		UPollerGroup        string `json:"u_poller_group,omitempty"`         // Custom Field
-		URack               string `json:"u_rack,omitempty"`                 // Custom Field
-		URackPosition       string `json:"u_rack_position,omitempty"`        // Custom Field
-		URackUnit           string `json:"u_rack_unit,omitempty"`            // Custom Field
-		URAMDescription     string `json:"u_ram_description,omitempty"`      // Custom Field
-		URAMHardwareCount   string `json:"u_ram_hardware_count,omitempty"`   // Custom Field
-		URoom               string `json:"u_room,omitempty"`                 // Custom Field
-		USerialID           string `json:"u_serial_id,omitempty"`            // Custom Field
-		UVip                string `json:"u_vip,omitempty"`                  // Custom Field
-		UVirtualCPUCount    string `json:"u_virtual_cpu_count,omitempty"`    // Custom Field
-		UVirtualDiskSize    string `json:"u_virtual_disk_size,omitempty"`    // Custom Field
-		UVirtualRAMSize     string `json:"u_virtual_ram_size,omitempty"`     // Custom Field
 	} `json:"result,omitempty"`
 }
 
@@ -638,32 +563,6 @@ type CmdbCiIpRouterResultsArray struct {
 		Unverified          string `json:"unverified,omitempty"`
 		Vendor              string `json:"vendor,omitempty"`
 		WarrantyExpiration  string `json:"warranty_expiration,omitempty"`
-		UApplicationPack    string `json:"u_application_pack,omitempty"`     // Custom Field
-		UBackupServer       string `json:"u_backup_server,omitempty"`        // Custom Field
-		UBuildDate          string `json:"u_build_date,omitempty"`           // Custom Field
-		UChangeAuthorizers  string `json:"u_change_authorizers,omitempty"`   // Custom Field
-		UComments           string `json:"u_comments,omitempty"`             // Custom Field
-		UDeviceID           string `json:"u_device_id,omitempty"`            // Custom Field
-		UDeviceLocation     string `json:"u_device_location,omitempty"`      // Custom Field
-		UExcludeFromAnsible string `json:"u_exclude_from_ansible,omitempty"` // Custom Field
-		UHostName           string `json:"u_host_name,omitempty"`            // Custom Field
-		UIPAddress          string `json:"u_ip_address,omitempty"`           // Custom Field
-		UKbArticle          string `json:"u_kb_article,omitempty"`           // Custom Field
-		ULegacySource       string `json:"u_legacy_source,omitempty"`        // Custom Field
-		ULoginPort          string `json:"u_login_port,omitempty"`           // Custom Field
-		UManagementLevel    string `json:"u_management_level,omitempty"`     // Custom Field
-		UManagementPack     string `json:"u_management_pack,omitempty"`      // Custom Field
-		UParent             string `json:"u_parent,omitempty"`               // Custom Field
-		UPollerGroup        string `json:"u_poller_group,omitempty"`         // Custom Field
-		URack               string `json:"u_rack,omitempty"`                 // Custom Field
-		URackPosition       string `json:"u_rack_position,omitempty"`        // Custom Field
-		URackUnit           string `json:"u_rack_unit,omitempty"`            // Custom Field
-		URAMDescription     string `json:"u_ram_description,omitempty"`      // Custom Field
-		URAMHardwareCount   string `json:"u_ram_hardware_count,omitempty"`   // Custom Field
-		URoom               string `json:"u_room,omitempty"`                 // Custom Field
-		UVip                string `json:"u_vip,omitempty"`                  // Custom Field
-		UVirtualDiskSize    string `json:"u_virtual_disk_size,omitempty"`    // Custom Field
-		UVirtualRAMSize     string `json:"u_virtual_ram_size,omitempty"`     // Custom Field
 	} `json:"result,omitempty"`
 }
 
@@ -781,38 +680,7 @@ type CmdbCiIpSwitchResultsArray struct {
 		Unverified          string `json:"unverified,omitempty"`
 		Vendor              string `json:"vendor,omitempty"`
 		WarrantyExpiration  string `json:"warranty_expiration,omitempty"`
-		UApplicationPack    string `json:"u_application_pack,omitempty"`     // Custom Field
-		UBackupServer       string `json:"u_backup_server,omitempty"`        // Custom Field
-		UBuildDate          string `json:"u_build_date,omitempty"`           // Custom Field
-		UChangeAuthorizers  string `json:"u_change_authorizers,omitempty"`   // Custom Field
-		UComments           string `json:"u_comments,omitempty"`             // Custom Field
-		UDeviceID           string `json:"u_device_id,omitempty"`            // Custom Field
-		UDeviceLocation     string `json:"u_device_location,omitempty"`      // Custom Field
-		UExcludeFromAnsible string `json:"u_exclude_from_ansible,omitempty"` // Custom Field
-		UHostName           string `json:"u_host_name,omitempty"`            // Custom Field
-		UIPAddress          string `json:"u_ip_address,omitempty"`           // Custom Field
-		UKbArticle          string `json:"u_kb_article,omitempty"`           // Custom Field
-		ULegacySource       string `json:"u_legacy_source,omitempty"`        // Custom Field
-		ULoginPort          string `json:"u_login_port,omitempty"`           // Custom Field
-		UManagementLevel    string `json:"u_management_level,omitempty"`     // Custom Field
-		UManagementPack     string `json:"u_management_pack,omitempty"`      // Custom Field
-		UParent             string `json:"u_parent,omitempty"`               // Custom Field
-		UPollerGroup        string `json:"u_poller_group,omitempty"`         // Custom Field
-		URack               struct {
-			Link  string `json:"link,omitempty"`
-			Value string `json:"value,omitempty"`
-		} `json:"u_rack,omitempty"` // Custom Field
-		URackPosition     string `json:"u_rack_position,omitempty"`      // Custom Field
-		URackUnit         string `json:"u_rack_unit,omitempty"`          // Custom Field
-		URAMDescription   string `json:"u_ram_description,omitempty"`    // Custom Field
-		URAMHardwareCount string `json:"u_ram_hardware_count,omitempty"` // Custom Field
-		URoom             struct {
-			Link  string `json:"link,omitempty"`
-			Value string `json:"value,omitempty"`
-		} `json:"u_room,omitempty"` // Custom Field
-		UVip             string `json:"u_vip,omitempty"`               // Custom Field
-		UVirtualDiskSize string `json:"u_virtual_disk_size,omitempty"` // Custom Field
-		UVirtualRAMSize  string `json:"u_virtual_ram_size,omitempty"`  // Custom Field
+
 	} `json:"result,omitempty"`
 }
 
@@ -922,36 +790,6 @@ type CmdbCiFirewallNetworkResultsArray struct {
 		Unverified          string `json:"unverified,omitempty"`
 		Vendor              string `json:"vendor,omitempty"`
 		WarrantyExpiration  string `json:"warranty_expiration,omitempty"`
-		UApplicationPack    string `json:"u_application_pack,omitempty"`     // Custom Field
-		UBackupServer       string `json:"u_backup_server,omitempty"`        // Custom Field
-		UBuildDate          string `json:"u_build_date,omitempty"`           // Custom Field
-		UChangeAuthorizers  string `json:"u_change_authorizers,omitempty"`   // Custom Field
-		UComments           string `json:"u_comments,omitempty"`             // Custom Field
-		UCustomerDeviceName string `json:"u_customer_device_name,omitempty"` // Custom Field
-		UDeviceID           string `json:"u_device_id,omitempty"`            // Custom Field
-		UDeviceLocation     string `json:"u_device_location,omitempty"`      // Custom Field
-		UExcludeFromAnsible string `json:"u_exclude_from_ansible,omitempty"` // Custom Field
-		UHostName           string `json:"u_host_name,omitempty"`            // Custom Field
-		UIPAddress          string `json:"u_ip_address,omitempty"`           // Custom Field
-		UKbArticle          string `json:"u_kb_article,omitempty"`           // Custom Field
-		ULegacySource       string `json:"u_legacy_source,omitempty"`        // Custom Field
-		ULoginPort          string `json:"u_login_port,omitempty"`           // Custom Field
-		UManagementLevel    string `json:"u_management_level,omitempty"`     // Custom Field
-		UManagementPack     string `json:"u_management_pack,omitempty"`      // Custom Field
-		UParent             string `json:"u_parent,omitempty"`               // Custom Field
-		UPollerGroup        string `json:"u_poller_group,omitempty"`         // Custom Field
-		URack               string `json:"u_rack,omitempty"`                 // Custom Field
-		URackPosition       string `json:"u_rack_position,omitempty"`        // Custom Field
-		URackUnit           string `json:"u_rack_unit,omitempty"`            // Custom Field
-		URAMDescription     string `json:"u_ram_description,omitempty"`      // Custom Field
-		URAMHardwareCount   string `json:"u_ram_hardware_count,omitempty"`   // Custom Field
-		URoom               struct {
-			Link  string `json:"link,omitempty"`
-			Value string `json:"value,omitempty"`
-		} `json:"u_room,omitempty"` // Custom Field
-		UVip             string `json:"u_vip,omitempty"`               // Custom Field
-		UVirtualDiskSize string `json:"u_virtual_disk_size,omitempty"` // Custom Field
-		UVirtualRAMSize  string `json:"u_virtual_ram_size,omitempty"`  // Custom Field
 	} `json:"result,omitempty"`
 }
 
@@ -1067,35 +905,6 @@ type CmdbCiNetgearResultsArray struct {
 		Unverified          string `json:"unverified,omitempty"`
 		Vendor              string `json:"vendor,omitempty"`
 		WarrantyExpiration  string `json:"warranty_expiration,omitempty"`
-		UApplicationPack    string `json:"u_application_pack,omitempty"`     // Custom Field
-		UBackupServer       string `json:"u_backup_server,omitempty"`        // Custom Field
-		UBuildDate          string `json:"u_build_date,omitempty"`           // Custom Field
-		UChangeAuthorizers  string `json:"u_change_authorizers,omitempty"`   // Custom Field
-		UComments           string `json:"u_comments,omitempty"`             // Custom Field
-		UDeviceID           string `json:"u_device_id,omitempty"`            // Custom Field
-		UDeviceLocation     string `json:"u_device_location,omitempty"`      // Custom Field
-		UExcludeFromAnsible string `json:"u_exclude_from_ansible,omitempty"` // Custom Field
-		UHostName           string `json:"u_host_name,omitempty"`            // Custom Field
-		UIPAddress          string `json:"u_ip_address,omitempty"`           // Custom Field
-		UKbArticle          string `json:"u_kb_article,omitempty"`           // Custom Field
-		ULegacySource       string `json:"u_legacy_source,omitempty"`        // Custom Field
-		ULoginPort          string `json:"u_login_port,omitempty"`           // Custom Field
-		UManagementLevel    string `json:"u_management_level,omitempty"`     // Custom Field
-		UManagementPack     string `json:"u_management_pack,omitempty"`      // Custom Field
-		UParent             string `json:"u_parent,omitempty"`               // Custom Field
-		UPollerGroup        string `json:"u_poller_group,omitempty"`         // Custom Field
-		URack               string `json:"u_rack,omitempty"`                 // Custom Field
-		URackPosition       string `json:"u_rack_position,omitempty"`        // Custom Field
-		URackUnit           string `json:"u_rack_unit,omitempty"`            // Custom Field
-		URAMDescription     string `json:"u_ram_description,omitempty"`      // Custom Field
-		URAMHardwareCount   string `json:"u_ram_hardware_count,omitempty"`   // Custom Field
-		URoom               struct {
-			Link  string `json:"link,omitempty"`
-			Value string `json:"value,omitempty"`
-		} `json:"u_room,omitempty"` // Custom Field
-		UVip             string `json:"u_vip,omitempty"`               // Custom Field
-		UVirtualDiskSize string `json:"u_virtual_disk_size,omitempty"` // Custom Field
-		UVirtualRAMSize  string `json:"u_virtual_ram_size,omitempty"`  // Custom Field
 	} `json:"result,omitempty"`
 }
 
@@ -1152,25 +961,6 @@ type CoreCompanyResultsArray struct {
 		VendorType           string `json:"vendor_type,omitempty"`
 		Website              string `json:"website,omitempty"`
 		Zip                  string `json:"zip,omitempty"`
-		UAccountManager      string `json:"u_account_manager,omitempty"`      // Custom Field
-		UAccountStatus       string `json:"u_account_status,omitempty"`       // Custom Field
-		UAutoClose           string `json:"u_auto_close,omitempty"`           // Custom Field
-		UChangeAuthorizers   string `json:"u_change_authorizers,omitempty"`   // Custom Field
-		UClientNumber        string `json:"u_client_number,omitempty"`        // Custom Field
-		UContactEmail        string `json:"u_contact_email,omitempty"`        // Custom Field
-		UCustomSop           string `json:"u_custom_sop,omitempty"`           // Custom Field
-		UIndustry            string `json:"u_industry,omitempty"`             // Custom Field
-		ULegacySource        string `json:"u_legacy_source,omitempty"`        // Custom Field
-		UMaintenanceSchedule string `json:"u_maintenance_schedule,omitempty"` // Custom Field
-		UNetworkAlias        string `json:"u_network_alias,omitempty"`        // Custom Field
-		UNotificationList    string `json:"u_notification_list,omitempty"`    // Custom Field
-		UProduct             string `json:"u_product,omitempty"`              // Custom Field
-		USalesforceID        string `json:"u_salesforce_id,omitempty"`        // Custom Field
-		USalesPerson         string `json:"u_sales_person,omitempty"`         // Custom Field
-		UTechnicalContacts   string `json:"u_technical_contacts,omitempty"`   // Custom Field
-		UUberClientID        string `json:"u_uber_client_id,omitempty"`       // Custom Field
-		UVip                 string `json:"u_vip,omitempty"`                  // Custom Field
-		UWatchList           string `json:"u_watch_list,omitempty"`           // Custom Field
 	} `json:"result,omitempty"`
 }
 
@@ -1243,27 +1033,5 @@ type SysUserResultsArray struct {
 		Vip                  string `json:"vip,omitempty"`
 		WebServiceAccessOnly string `json:"web_service_access_only,omitempty"`
 		Zip                  string `json:"zip,omitempty"`
-		UAccess              string `json:"u_access,omitempty"`                // Custom Field
-		UActiveCompanyFilter string `json:"u_active_company_filter,omitempty"` // Custom Field
-		ULastActive          string `json:"u_last_active,omitempty"`           // Custom Field
-		ULegacySource        string `json:"u_legacy_source,omitempty"`         // Custom Field
-		UPassphrase          string `json:"u_passphrase,omitempty"`            // Custom Field
-		UUberClientID        string `json:"u_uber_client_id,omitempty"`        // Custom Field
-		UUberID              string `json:"u_uber_id,omitempty"`               // Custom Field
 	} `json:"result,omitempty"`
-}
-
-type UApplicationPackResultsArray struct {
-	Result []struct {
-		SysCreatedBy     string `json:"sys_created_by,omitempty"`
-		SysCreatedOn     string `json:"sys_created_on,omitempty"`
-		SysID            string `json:"sys_id,omitempty"`
-		SysModCount      string `json:"sys_mod_count,omitempty"`
-		SysTags          string `json:"sys_tags,omitempty"`
-		SysUpdatedBy     string `json:"sys_updated_by,omitempty"`
-		SysUpdatedOn     string `json:"sys_updated_on,omitempty"`
-		UActive          string `json:"u_active,omitempty"`           // Custom Field
-		UApplicationPack string `json:"u_application_pack,omitempty"` // Custom Field
-		UElement         string `json:"u_element,omitempty"`          // Custom Fieldx
-	} `json:"result"`
 }

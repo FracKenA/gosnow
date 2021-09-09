@@ -438,10 +438,10 @@ func (t RequestTransitive) SysUser() (SysUserResultsArray, Result, error) {
 	return i, h, e
 }
 
-func (t RequestTransitive) UApplicationPack() (UApplicationPackResultsArray, Result, error) {
+func (t RequestTransitive) Custom(tableName string) (map[string]interface{} , Result, error) {
 
-	var i UApplicationPackResultsArray
-	req := AssembleRequest(t, "u_application_pack")
+	var i map[string]interface{}
+	req := AssembleRequest(t, tableName)
 
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
